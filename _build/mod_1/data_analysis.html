@@ -1,0 +1,898 @@
+---
+redirect_from:
+  - "/mod-1/data-analysis"
+interact_link: content/mod_1/data_analysis.ipynb
+kernel_name: prework-labs
+kernel_path: content/mod_1
+has_widgets: false
+title: |-
+  Data Analysis with Built-In Types
+pagenum: 12
+prev_page:
+  url: /mod_1/eda.html
+next_page:
+  url: /mod_1/on_numpy.html
+suffix: .ipynb
+search: csv data sales property file org rawdata unzip html king county library python wa row zip docs information using directory wget read analysis download files www list install brew lets our contents real within format fieldnames year built command homebrew not uncomment cell below into place inspect extrrpsale excel used dictreader object ordereddict sold datetime sorted looks s types line internet without pandas numpy perform working dictionaries matplotlib create sh package necessary kingcounty gov default aspx well need where p dont help essentially layer contains inside after knowing objects want function collections keys parameter since same order questions work count
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Data Analysis with Built-In Types</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-analysis-in-Python-using-built-in-types">Data analysis in Python using built-in types<a class="anchor-link" href="#Data-analysis-in-Python-using-built-in-types"> </a></h1><hr>
+<h2 id="Learning-Objectives">Learning Objectives<a class="anchor-link" href="#Learning-Objectives"> </a></h2><ul>
+<li>Using the command line to:<ul>
+<li>make directories</li>
+<li>download files from internet</li>
+<li>unzip <code>.zip</code> files</li>
+</ul>
+</li>
+<li>Import a <code>.csv</code> file without <a href="https://pandas.pydata.org/about.html"><code>pandas</code></a> or <a href="https://www.numpy.org/"><code>numpy</code></a></li>
+<li>Perform data analysis using built-in types<ul>
+<li>working with dates</li>
+<li>sorting dictionaries</li>
+<li>for loops and list comprehension</li>
+<li>visualizing data with <a href="https://matplotlib.org/index.html"><code>matplotlib</code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Create-a-new-raw_data-directory">Create a new <code>raw_data</code> directory<a class="anchor-link" href="#Create-a-new-raw_data-directory"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>mkdir raw_data
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-Homebrew">Install Homebrew<a class="anchor-link" href="#Install-Homebrew"> </a></h2><p><a href="https://brew.sh/"><code>homebrew</code></a> is the package manager for MacOS. This tutorial assumes that you have it installed on your machine.</p>
+<p><em>If not, please uncomment and run the cell below to install <code>homebrew</code>.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Download-necessary-data">Download necessary data<a class="anchor-link" href="#Download-necessary-data"> </a></h2><p>Let's download <a href="https://info.kingcounty.gov/assessor/DataDownload/default.aspx">King County, WA property sales data</a> into our newly created <code>raw_data</code> directory. We'll be using the <a href="https://www.gnu.org/software/wget/"><code>wget</code></a> package to download local copies of files from the Internet.</p>
+<p>The default directory is the current working directory so we need to specify where <code>wget</code> should place the file via the <code>-P</code> flag.</p>
+
+<pre><code># &lt;&gt; are placeholders so do not include them in your commands
+wget &lt;url&gt; -P &lt;file path&gt;</code></pre>
+<p><em>If you don't have <code>wget</code>, uncomment the cell below to have <code>brew</code> install it for you.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!brew install wget</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>wget https://aqua.kingcounty.gov/extranet/assessor/Real%20Property%20Sales.zip -P raw_data/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>--2020-03-04 12:17:51--  https://aqua.kingcounty.gov/extranet/assessor/Real%20Property%20Sales.zip
+Resolving aqua.kingcounty.gov (aqua.kingcounty.gov)... 146.129.240.28
+Connecting to aqua.kingcounty.gov (aqua.kingcounty.gov)|146.129.240.28|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 127293020 (121M) [application/x-zip-compressed]
+Saving to: ‘raw_data/Real Property Sales.zip’
+
+Real Property Sales 100%[===================&gt;] 121.40M  8.01MB/s    in 17s     
+
+2020-03-04 12:18:08 (7.30 MB/s) - ‘raw_data/Real Property Sales.zip’ saved [127293020/127293020]
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's inspect the contents of <code>raw_data</code> to verify that we have the data</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls -l raw_data/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 263456
+-rw-r--r--  1 ehoffman  staff  127293020 Feb 28 21:51 Real Property Sales.zip
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Unzip-raw_data/Real-Property-Sales.zip">Unzip <code>raw_data/Real Property Sales.zip</code><a class="anchor-link" href="#Unzip-raw_data/Real-Property-Sales.zip"> </a></h3><p>Currently the data lives in a <a href="http://cvs.bio.unc.edu/protocol/unzip-help/unzip-help.htm"><code>.zip</code></a> file, which is essentially a layer that contains the actual data.</p>
+<p>To extract - or unpeel - the contents within the <code>.zip</code> file, we'll use the <a href="https://formulae.brew.sh/formula/unzip"><code>unzip</code></a> command.</p>
+<p>By specifying <code>-d raw_data/</code>, we're telling <code>unzip</code> to place the contents of <code>raw_data/Real Property Sales.zip</code> inside the <code>raw_data/</code> directory.</p>
+<p><em>If you don't have <code>unzip</code>, uncomment the cell below to have <code>brew</code> install it for you.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ch">#!brew install unzip</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>unzip raw_data/Real<span class="se">\ </span>Property<span class="se">\ </span>Sales.zip -d raw_data/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Archive:  raw_data/Real Property Sales.zip
+  inflating: raw_data/EXTR_RPSale.csv  
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After unzipping <code>raw_data/Real Property Sales.zip</code>, we now have access to the <code>raw_data/EXTR_RPSale.csv</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>ls -l raw_data/
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total 1356832
+-rw-r--r--  1 ehoffman  staff  549516051 Feb 28 18:23 EXTR_RPSale.csv
+-rw-r--r--  1 ehoffman  staff  127293020 Feb 28 21:51 Real Property Sales.zip
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Load-necessary-data">Load necessary data<a class="anchor-link" href="#Load-necessary-data"> </a></h2><blockquote><p>The <code>csv</code> module implements classes to read and write tabular data in CSV format. It allows programmers to say, “write this data in the format preferred by Excel,” or “read data from this file which was generated by Excel,” without knowing the precise details of the CSV format used by Excel. - <a href="https://docs.python.org/3/library/csv.html"><code>csv</code> documentation</a></p>
+</blockquote>
+<h3 id="Using-the-csv-library">Using the <code>csv</code> library<a class="anchor-link" href="#Using-the-csv-library"> </a></h3><p>The <code>csv</code> library contains objects and other code to read, write, and process data from and to CSV files. Essentially, we want to read each row in the <code>.csv</code> file and stores its information for later use.</p>
+<h3 id="How-csv-works">How <code>csv</code> works<a class="anchor-link" href="#How-csv-works"> </a></h3><p>The <a href="https://docs.python.org/3/library/csv.html#csv.DictReader"><code>csv.DictReader()</code></a> function creates an object that operates like a regular reader - where information is returned as <a href="https://docs.python.org/3.7/library/stdtypes.html#text-sequence-type-str">strings</a> - but maps the information in each row to an <a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict">OrderedDict</a> whose keys are given by the optional <code>fieldnames</code> parameter. If <code>fieldnames</code> is omitted, the values in the first row of file f will be used as the fieldnames.</p>
+<p>Since each row is an <code>OrderedDict</code> object, we know that information in each dictionary will be in the same order as they appear within the <code>.csv</code> file.</p>
+<h3 id="Inspect-the-first-two-rows-in-the-raw_data/EXTR_RPSale.csv-file">Inspect the first two rows in the <code>raw_data/EXTR_RPSale.csv</code> file<a class="anchor-link" href="#Inspect-the-first-two-rows-in-the-raw_data/EXTR_RPSale.csv-file"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>head -n <span class="m">2</span> raw_data/EXTR_RPSale.csv
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&#34;ExciseTaxNbr&#34;,&#34;Major&#34;,&#34;Minor&#34;,&#34;DocumentDate&#34;,&#34;SalePrice&#34;,&#34;RecordingNbr&#34;,&#34;Volume&#34;,&#34;Page&#34;,&#34;PlatNbr&#34;,&#34;PlatType&#34;,&#34;PlatLot&#34;,&#34;PlatBlock&#34;,&#34;SellerName&#34;,&#34;BuyerName&#34;,&#34;PropertyType&#34;,&#34;PrincipalUse&#34;,&#34;SaleInstrument&#34;,&#34;AFForestLand&#34;,&#34;AFCurrentUseLand&#34;,&#34;AFNonProfitUse&#34;,&#34;AFHistoricProperty&#34;,&#34;SaleReason&#34;,&#34;PropertyClass&#34;,&#34;SaleWarning&#34;
+&#34;2687551&#34;,&#34;138860&#34;,&#34;0110&#34;,&#34;08/21/2014&#34;,&#34;245000&#34;,&#34;20140828001436&#34;,&#34;   &#34;,&#34;   &#34;,&#34;      &#34;,&#34; &#34;,&#34;              &#34;,&#34;       &#34;,&#34;WENKLE NOEL SMITH -TRUSTEE                        &#34;,&#34;ALEXANDER APRIL                                   &#34;,&#34;3&#34;,&#34;6&#34;,&#34;3&#34;,&#34;N&#34;,&#34;N&#34;,&#34;N&#34;,&#34;N&#34;,&#34;1&#34;,&#34;8&#34;,&#34; &#34;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now that we know that the first row is the column headers, we can safely omit the <code>fieldnames</code> parameter knowing that <code>csv.DictReader()</code> will use the first row as the keys within each row.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">sales</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;raw_data/EXTR_RPSale.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">sales</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The contents of <code>sales[0]</code> is exactly the same as it was when we viewed the first two records of the <code>raw_data/EXTR_RPSale.csv</code> file from the command line.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sales</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;ExciseTaxNbr&#39;, &#39;2687551&#39;),
+             (&#39;Major&#39;, &#39;138860&#39;),
+             (&#39;Minor&#39;, &#39;0110&#39;),
+             (&#39;DocumentDate&#39;, &#39;08/21/2014&#39;),
+             (&#39;SalePrice&#39;, &#39;245000&#39;),
+             (&#39;RecordingNbr&#39;, &#39;20140828001436&#39;),
+             (&#39;Volume&#39;, &#39;   &#39;),
+             (&#39;Page&#39;, &#39;   &#39;),
+             (&#39;PlatNbr&#39;, &#39;      &#39;),
+             (&#39;PlatType&#39;, &#39; &#39;),
+             (&#39;PlatLot&#39;, &#39;              &#39;),
+             (&#39;PlatBlock&#39;, &#39;       &#39;),
+             (&#39;SellerName&#39;,
+              &#39;WENKLE NOEL SMITH -TRUSTEE                        &#39;),
+             (&#39;BuyerName&#39;,
+              &#39;ALEXANDER APRIL                                   &#39;),
+             (&#39;PropertyType&#39;, &#39;3&#39;),
+             (&#39;PrincipalUse&#39;, &#39;6&#39;),
+             (&#39;SaleInstrument&#39;, &#39;3&#39;),
+             (&#39;AFForestLand&#39;, &#39;N&#39;),
+             (&#39;AFCurrentUseLand&#39;, &#39;N&#39;),
+             (&#39;AFNonProfitUse&#39;, &#39;N&#39;),
+             (&#39;AFHistoricProperty&#39;, &#39;N&#39;),
+             (&#39;SaleReason&#39;, &#39;1&#39;),
+             (&#39;PropertyClass&#39;, &#39;8&#39;),
+             (&#39;SaleWarning&#39;, &#39; &#39;)])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Analysis">Data Analysis<a class="anchor-link" href="#Data-Analysis"> </a></h2><p>Now that you have all the property sales data from King County, WA within the list <code>sales</code>, you can finally start to perform some data analysis.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.-For-each-year,-how-many-houses-were-sold?">1. For each year, how many houses were sold?<a class="anchor-link" href="#1.-For-each-year,-how-many-houses-were-sold?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Anytime you encounter questions regarding time, you need to know if your data is in <a href="https://docs.python.org/3.7/library/datetime.html"><code>datetime</code></a> format. <code>datetime</code> objects make it easy to date and time calculation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">sale</span> <span class="ow">in</span> <span class="n">sales</span><span class="p">:</span>
+    <span class="c1"># transform DocumentDate from string to datetime</span>
+    <span class="n">sale</span><span class="p">[</span><span class="s2">&quot;clean_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">sale</span><span class="p">[</span><span class="s2">&quot;DocumentDate&quot;</span><span class="p">],</span> 
+                                           <span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y&quot;</span><span class="p">)</span>
+    <span class="c1"># store the sale year and month</span>
+    <span class="n">sale</span><span class="p">[</span><span class="s2">&quot;sale_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sale</span><span class="p">[</span><span class="s2">&quot;clean_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">sale</span><span class="p">[</span><span class="s2">&quot;sale_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sale</span><span class="p">[</span><span class="s2">&quot;clean_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's inspect our work</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sales</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>OrderedDict([(&#39;ExciseTaxNbr&#39;, &#39;2687551&#39;),
+             (&#39;Major&#39;, &#39;138860&#39;),
+             (&#39;Minor&#39;, &#39;0110&#39;),
+             (&#39;DocumentDate&#39;, &#39;08/21/2014&#39;),
+             (&#39;SalePrice&#39;, &#39;245000&#39;),
+             (&#39;RecordingNbr&#39;, &#39;20140828001436&#39;),
+             (&#39;Volume&#39;, &#39;   &#39;),
+             (&#39;Page&#39;, &#39;   &#39;),
+             (&#39;PlatNbr&#39;, &#39;      &#39;),
+             (&#39;PlatType&#39;, &#39; &#39;),
+             (&#39;PlatLot&#39;, &#39;              &#39;),
+             (&#39;PlatBlock&#39;, &#39;       &#39;),
+             (&#39;SellerName&#39;,
+              &#39;WENKLE NOEL SMITH -TRUSTEE                        &#39;),
+             (&#39;BuyerName&#39;,
+              &#39;ALEXANDER APRIL                                   &#39;),
+             (&#39;PropertyType&#39;, &#39;3&#39;),
+             (&#39;PrincipalUse&#39;, &#39;6&#39;),
+             (&#39;SaleInstrument&#39;, &#39;3&#39;),
+             (&#39;AFForestLand&#39;, &#39;N&#39;),
+             (&#39;AFCurrentUseLand&#39;, &#39;N&#39;),
+             (&#39;AFNonProfitUse&#39;, &#39;N&#39;),
+             (&#39;AFHistoricProperty&#39;, &#39;N&#39;),
+             (&#39;SaleReason&#39;, &#39;1&#39;),
+             (&#39;PropertyClass&#39;, &#39;8&#39;),
+             (&#39;SaleWarning&#39;, &#39; &#39;),
+             (&#39;clean_date&#39;, datetime.datetime(2014, 8, 21, 0, 0)),
+             (&#39;sale_year&#39;, 2014),
+             (&#39;sale_month&#39;, 8)])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For all dictionaries in <code>sales</code>, we want to count how many property sales occured in each year. Since the value in <code>sale_year</code> is an integer, we can used Python's built-in <a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted</code></a> function to transform the <code>Counter</code> object into a <code>list</code> of <code>tuples</code> - <code>(year, count)</code> which are sorted in ascending order by year.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">sale_year_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="n">sale</span><span class="p">[</span><span class="s1">&#39;sale_year&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">sale</span> <span class="ow">in</span> <span class="n">sales</span><span class="p">])</span>
+<span class="n">sale_year_count</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sale_year_count</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="n">sale_year_count</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(1900, 1),
+ (1934, 1),
+ (1951, 1),
+ (1953, 1),
+ (1954, 9),
+ (1955, 3),
+ (1956, 1),
+ (1957, 3),
+ (1958, 1),
+ (1959, 4),
+ (1960, 10),
+ (1961, 5),
+ (1962, 5),
+ (1963, 9),
+ (1964, 20),
+ (1965, 11),
+ (1966, 12),
+ (1967, 18),
+ (1968, 9),
+ (1969, 20),
+ (1970, 17),
+ (1971, 14),
+ (1972, 27),
+ (1973, 45),
+ (1974, 35),
+ (1975, 43),
+ (1976, 62),
+ (1977, 97),
+ (1978, 103),
+ (1979, 124),
+ (1980, 186),
+ (1981, 408),
+ (1982, 6035),
+ (1983, 8607),
+ (1984, 9200),
+ (1985, 10557),
+ (1986, 14627),
+ (1987, 13575),
+ (1988, 14190),
+ (1989, 17232),
+ (1990, 16606),
+ (1991, 17525),
+ (1992, 67860),
+ (1993, 69457),
+ (1994, 64912),
+ (1995, 57982),
+ (1996, 63655),
+ (1997, 72092),
+ (1998, 79579),
+ (1999, 75240),
+ (2000, 69876),
+ (2001, 71264),
+ (2002, 77036),
+ (2003, 86301),
+ (2004, 89388),
+ (2005, 93485),
+ (2006, 84733),
+ (2007, 73256),
+ (2008, 51811),
+ (2009, 52390),
+ (2010, 54691),
+ (2011, 56184),
+ (2012, 62450),
+ (2013, 69418),
+ (2014, 64270),
+ (2015, 68936),
+ (2016, 70453),
+ (2017, 68442),
+ (2018, 61132),
+ (2019, 60933),
+ (2020, 6264)]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This <code>list</code> of <code>tuples</code> is not something our employers can use to make a decision. Let's visualize the results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a figure and one plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># place data in a bar chart </span>
+<span class="c1"># where the x-axis is each year and </span>
+<span class="c1"># the y-axis is the number of sales per year</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">sale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">sale</span> <span class="ow">in</span> <span class="n">sale_year_count</span><span class="p">],</span>
+       <span class="n">height</span><span class="o">=</span><span class="p">[</span><span class="n">sale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">sale</span> <span class="ow">in</span> <span class="n">sale_year_count</span><span class="p">])</span>
+
+<span class="c1"># set axis labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of property sales&quot;</span><span class="p">)</span>
+
+<span class="c1"># give the bar chart a title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Property sales in King County, WA (1900 to 2021)&quot;</span><span class="p">)</span>
+
+<span class="c1"># display bar chart clearly</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/mod_1/data_analysis_32_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By the looks of our number of property sales over time bar plot, it looks like property sales in King County, WA started taking off in the 1980s. They continued climbing into the early 2000s. Despite the recession reducing the number of home sales in the late 2000s, it looks like they are continuing to climb.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here are some more exercises to work through on your own:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.-After-removing-the-one-record-that-took-place-in-2021,-what-is-the-annual-average-nominal-property-sales-price-in-King-County,-WA?">2. After removing the one record that took place in 2021, what is the annual average <a href="https://www.stlouisfed.org/publications/inside-the-vault/fall-2007/nominal-vs-real-oil-prices">nominal</a> property sales price in King County, WA?<a class="anchor-link" href="#2.-After-removing-the-one-record-that-took-place-in-2021,-what-is-the-annual-average-nominal-property-sales-price-in-King-County,-WA?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.-Which-property-has-been-sold-the-most-in-King-County,-WA-throughout-time?">3. Which property has been sold the most in King County, WA throughout time?<a class="anchor-link" href="#3.-Which-property-has-been-sold-the-most-in-King-County,-WA-throughout-time?"> </a></h3><p>This questions requires you to create a <strong>P</strong>arcel <strong>I</strong>dentification <strong>N</strong>umber (PIN). To learn how to do this, read the "Attribute Information" section on the Parcel webpage from the <a href="https://www5.kingcounty.gov/sdc/Metadata.aspx?Layer=parcel">King County Geographic Information System (KCGI)</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.-Who-are-the-top-5-sellers-in-terms-of-who-has-sold-the-most-property-in-King-County,-WA-throughout-time?">4. Who are the top 5 sellers in terms of who has sold the most property in King County, WA throughout time?<a class="anchor-link" href="#4.-Who-are-the-top-5-sellers-in-terms-of-who-has-sold-the-most-property-in-King-County,-WA-throughout-time?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="5.-From-2009-to-2019,-which-buyer-has-bought-the-most-property-in-King-County,-WA?">5. From 2009 to 2019, which buyer has bought the most property in King County, WA?<a class="anchor-link" href="#5.-From-2009-to-2019,-which-buyer-has-bought-the-most-property-in-King-County,-WA?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

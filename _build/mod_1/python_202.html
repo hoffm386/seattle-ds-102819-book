@@ -1,0 +1,1178 @@
+---
+redirect_from:
+  - "/mod-1/python-202"
+interact_link: content/mod_1/python_202.ipynb
+kernel_name: python3
+kernel_path: content/mod_1
+has_widgets: false
+title: |-
+  Python Fundamentals II
+pagenum: 9
+prev_page:
+  url: /mod_1/python_101.html
+next_page:
+  url: /mod_1/git_workflow.html
+suffix: .ipynb
+search: list function returns methods build string values functions array take here useful element loops integers python strings letter summary lists removes argument value comprehension arrays length default return capitalize details answer f into end remove start want dictionary keys times comprehensions inside object objects datatype converts question whats difference between title capitalizes variables adds where del handy new suppose x dictionaries dictionarys zipping built already print given type sum smallest member specified sometimes well divides twice input odd name any arguments parentheses our three middle divisible whose essentials method belongs things naturally belong particular vary depending upper uppercase lower lowercase
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Python Fundamentals II</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="More-Python-Essentials!">More Python Essentials!<a class="anchor-link" href="#More-Python-Essentials!"> </a></h1><h2 id="Methods">Methods<a class="anchor-link" href="#Methods"> </a></h2><p>A method is a function that belongs to an object. And in Python, most things are objects! Naturally, the methods that belong to a particular object can vary depending on the object's datatype.</p>
+<h3 id="String-Methods">String Methods<a class="anchor-link" href="#String-Methods"> </a></h3><p>Here are some useful methods for strings:</p>
+<ul>
+<li><code>.upper()</code>: converts a string to uppercase</li>
+<li><code>.lower()</code>: converts a string to lowercase</li>
+<li><code>.capitalize()</code>: makes the first letter of a string a capital</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;greg&#39;</span>
+<span class="n">last_name</span> <span class="o">=</span> <span class="s1">&#39;damico&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Question: What's the difference between <code>.capitalize()</code> and <code>.title()</code>?</p>
+<details>
+    <summary>
+    Answer here
+    </summary>
+    .capitalize() capitalizes the first letter of a string;<br/>
+        .title() capitalizes the first letter and each letter after a space
+    </details>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="f-Strings">f-Strings<a class="anchor-link" href="#f-Strings"> </a></h4><p>f-Strings are a convenient way to bring variables into strings.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fav_num</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">adj</span> <span class="o">=</span> <span class="s1">&#39;greatest&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I love </span><span class="si">{fav_num}</span><span class="s2">. It&#39;s the </span><span class="si">{adj}</span><span class="s2">!&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I love 42. It&#39;s the greatest!
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="List-Methods">List Methods<a class="anchor-link" href="#List-Methods"> </a></h3><p>Here are some useful methods for lists:</p>
+<ul>
+<li><code>.append()</code>: adds an element to the end of a list</li>
+<li><code>.pop()</code>: removes an element from the list</li>
+<li><code>.extend()</code>: adds multiple elements to the end of a list</li>
+<li><code>.index()</code>: returns (first) place in list where argument is found</li>
+<li><code>.remove()</code>: removes element by value</li>
+</ul>
+<p>Question: What's the difference between <code>.remove()</code> and <code>del</code>?</p>
+<p><details>
+    <summary>
+        Answer here
+    </summary>
+    .remove() removes an element by value;<br/>
+    del removes an element by position</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">list_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+
+
+<span class="c1"># Add list_2 to list_1 so that we have one big list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Note that this alters list_1!</span>
+
+<span class="n">list_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">list_2</span><span class="p">)</span>
+<span class="n">list_1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[1, 2, 4, 8, 16]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s write a loop that will build a list of the characters of the</span>
+<span class="c1"># string: &#39;supercalifragilisticexpialidocious&#39;</span>
+
+<span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;supercalifragilisticexpialidocious&#39;</span>
+<span class="n">char_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+    <span class="n">char_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+
+<span class="n">char_list</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;s&#39;,
+ &#39;u&#39;,
+ &#39;p&#39;,
+ &#39;e&#39;,
+ &#39;r&#39;,
+ &#39;c&#39;,
+ &#39;a&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;f&#39;,
+ &#39;r&#39;,
+ &#39;a&#39;,
+ &#39;g&#39;,
+ &#39;i&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;s&#39;,
+ &#39;t&#39;,
+ &#39;i&#39;,
+ &#39;c&#39;,
+ &#39;e&#39;,
+ &#39;x&#39;,
+ &#39;p&#39;,
+ &#39;i&#39;,
+ &#39;a&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;d&#39;,
+ &#39;o&#39;,
+ &#39;c&#39;,
+ &#39;i&#39;,
+ &#39;o&#39;,
+ &#39;u&#39;,
+ &#39;s&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># What does list(word) do?</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;s&#39;,
+ &#39;u&#39;,
+ &#39;p&#39;,
+ &#39;e&#39;,
+ &#39;r&#39;,
+ &#39;c&#39;,
+ &#39;a&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;f&#39;,
+ &#39;r&#39;,
+ &#39;a&#39;,
+ &#39;g&#39;,
+ &#39;i&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;s&#39;,
+ &#39;t&#39;,
+ &#39;i&#39;,
+ &#39;c&#39;,
+ &#39;e&#39;,
+ &#39;x&#39;,
+ &#39;p&#39;,
+ &#39;i&#39;,
+ &#39;a&#39;,
+ &#39;l&#39;,
+ &#39;i&#39;,
+ &#39;d&#39;,
+ &#39;o&#39;,
+ &#39;c&#39;,
+ &#39;i&#39;,
+ &#39;o&#39;,
+ &#39;u&#39;,
+ &#39;s&#39;]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="o">+</span> <span class="s1">&#39;hello&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;shello&#39;, &#39;uhello&#39;, &#39;phello&#39;, &#39;ehello&#39;, &#39;rhello&#39;, &#39;chello&#39;, &#39;ahello&#39;, &#39;lhello&#39;, &#39;ihello&#39;, &#39;fhello&#39;, &#39;rhello&#39;, &#39;ahello&#39;, &#39;ghello&#39;, &#39;ihello&#39;, &#39;lhello&#39;, &#39;ihello&#39;, &#39;shello&#39;, &#39;thello&#39;, &#39;ihello&#39;, &#39;chello&#39;, &#39;ehello&#39;, &#39;xhello&#39;, &#39;phello&#39;, &#39;ihello&#39;, &#39;ahello&#39;, &#39;lhello&#39;, &#39;ihello&#39;, &#39;dhello&#39;, &#39;ohello&#39;, &#39;chello&#39;, &#39;ihello&#39;, &#39;ohello&#39;, &#39;uhello&#39;, &#39;shello&#39;]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_1</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="c1"># What does this return?</span>
+<span class="c1"># What does list_1 look like now?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>16</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="List-Comprehension">List Comprehension<a class="anchor-link" href="#List-Comprehension"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>List comprehension is a handy way of generating a new list from existing lists.</p>
+<p>Suppose I start with a simple list.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What I want now to do is to build a new list that comprises doubles of primes. I can do this with list comprehension!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The syntax is: <code>[ f(x) for x in [original list] ]</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prime_doubles</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">primes</span><span class="p">]</span>
+<span class="n">prime_triples</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="mi">3</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">primes</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prime_doubles</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[4, 6, 10, 14, 22, 26, 34, 38]</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Dictionary-Methods">Dictionary Methods<a class="anchor-link" href="#Dictionary-Methods"> </a></h3><p>Here are some useful methods for dictionaries:</p>
+<ul>
+<li><code>.keys()</code>: returns an array of the dictionary's keys</li>
+<li><code>.values()</code>: returns an array of the dictionary's values</li>
+<li><code>.items()</code>: returns an array of key-value tuples</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">zoo</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;monkey&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use the .keys() method to print the keys of this dictionary!</span>
+
+<span class="c1"># Use the .values() method to print the values of this dictionary!</span>
+
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">zoo</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+2
+3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Dictionary-Comprehension">Dictionary Comprehension<a class="anchor-link" href="#Dictionary-Comprehension"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="o">+</span> <span class="s1">&#39; monkeys&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">zoo</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{1: &#39;giraffe monkeys&#39;, 2: &#39;elephant monkeys&#39;, 3: &#39;monkey monkeys&#39;}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{0: 1, 4: 9, 16: 25}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Zipping">Zipping<a class="anchor-link" href="#Zipping"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Zipping is a way of merging two arrays into one. The result can be cast as a list or as a dict.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">zip</span><span class="p">(</span><span class="n">primes</span><span class="p">,</span> <span class="n">prime_doubles</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;zip at 0x103315c88&gt;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">primes</span><span class="p">,</span> <span class="n">prime_doubles</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{2: 4, 3: 6, 5: 10, 7: 14, 11: 22, 13: 26, 17: 34, 19: 38}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Built-In-Functions">Built-In Functions<a class="anchor-link" href="#Built-In-Functions"> </a></h2><p>Many useful functions are already built into Python:</p>
+<ul>
+<li><code>print()</code>: print the given string or variable's value</li>
+<li><code>type()</code>: returns the datatype of the argument</li>
+<li><code>len()</code>: returns the length of an array</li>
+<li><code>sum()</code>: returns the sum of the array's values</li>
+<li><code>min()</code>: returns the smallest member of an array</li>
+<li><code>max()</code>: returns the largest member of an array</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># What will this return?</span>
+
+<span class="nb">max</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>9</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="While-Loops">While Loops<a class="anchor-link" href="#While-Loops"> </a></h2><p>We have already seen 'for'-loops, where you use a loop and count the iterations by the some pre-specified number. But sometimes we don't know how many times we'll need to iterate!</p>
+<p>Suppose I want to build a program that will take in a whole number and then tell me how many times 2 divides that number evenly. So e.g. 2 divides 4 twice but 10 only once (and 1536 nine times).</p>
+<p>A good first start is to take the input number and start dividing by 2. But when do I stop? Answer: When I reach an odd number!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s code it!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Nested-Loops-and-List-Comprehensions">Nested Loops and List Comprehensions<a class="anchor-link" href="#Nested-Loops-and-List-Comprehensions"> </a></h2><p>We can put loops inside of other loops and list comprehensions inside of other list comprehensions. These come in handy especially when we have arrays inside of other arrays.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">phone_nos</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;greg&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;home&#39;</span><span class="p">:</span> <span class="mi">1234567</span><span class="p">,</span> <span class="s1">&#39;work&#39;</span><span class="p">:</span> <span class="mi">7654321</span><span class="p">}},</span>
+          <span class="p">{</span><span class="s1">&#39;brian&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;home&#39;</span><span class="p">:</span> <span class="mi">9876543</span><span class="p">,</span> <span class="s1">&#39;work&#39;</span><span class="p">:</span> <span class="mi">1010001</span><span class="p">}},</span>
+            <span class="p">{</span><span class="s1">&#39;cristian&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;home&#39;</span><span class="p">:</span> <span class="mi">1111111</span><span class="p">,</span> <span class="s1">&#39;work&#39;</span><span class="p">:</span> <span class="mi">2222222</span><span class="p">}},</span>
+            <span class="p">{</span><span class="s1">&#39;erin&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;home&#39;</span><span class="p">:</span> <span class="mi">3333333</span><span class="p">,</span> <span class="s1">&#39;work&#39;</span><span class="p">:</span> <span class="mi">4444444</span><span class="p">}}]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Exercise: from the above list, make a list of names with corresponding home phone numbers.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Functions">Functions<a class="anchor-link" href="#Functions"> </a></h2><p>This aspect of Python is <em>incredibly</em> useful! Writing your own functions can save you a TON of work - by <em>automating</em> it.</p>
+<h3 id="Creating-Functions">Creating Functions<a class="anchor-link" href="#Creating-Functions"> </a></h3><p>The first line will read:</p>
+<p>'def' + <em>your function's name</em> + '( )' + ':'</p>
+<p>Any arguments to the function will go in the parentheses.</p>
+<p>Let's try building a function that will automate our task of finding all the factors of 2 of a given number!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s code it!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Calling-Functions">Calling Functions<a class="anchor-link" href="#Calling-Functions"> </a></h3><p>To <em>call</em> a function, simply type its name, along with any necessary arguments in parentheses.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s call it!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Default-Argument-Values">Default Argument Values<a class="anchor-link" href="#Default-Argument-Values"> </a></h3><p>Sometimes we'll want the argument(s) of our function to have default values.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">cheers</span><span class="p">(</span><span class="n">person</span><span class="o">=</span><span class="s1">&#39;aaron&#39;</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="s1">&#39;data scientist&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Hooray for </span><span class="si">{person}</span><span class="s1">. You</span><span class="se">\&#39;</span><span class="s1">re a </span><span class="si">{job}</span><span class="s1"> and you</span><span class="se">\&#39;</span><span class="s1">re {str(age)}!&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cheers</span><span class="p">(</span><span class="s1">&#39;greg&#39;</span><span class="p">,</span> <span class="s1">&#39;scientist&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;Hooray for greg. You&#39;re a scientist and you&#39;re 80!&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cheers</span><span class="p">(</span><span class="s1">&#39;cristian&#39;</span><span class="p">,</span> <span class="s1">&#39;git enthusiast&#39;</span><span class="p">,</span> <span class="mi">93</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;Hooray for cristian. You&#39;re a git enthusiast and you&#39;re 93!&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cheers</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;Hooray for aaron. You&#39;re a data scientist and you&#39;re 30!&#34;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exercises:">Exercises:<a class="anchor-link" href="#Exercises:"> </a></h2><ol>
+<li>Build a function that will take an input string and add '-totally' to the end of it.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Build a function that will take in three numbers and return twice the smallest of the three.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Build a function that will create a list, of user-specified length, of empty dictionaries.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Build a function that will return the middle value (for odd-length) or middle two values (for even-length) of a string.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Build a function that will take in a list of lists of integers - default: [[1, 2], [34, 27], [45, 13]] - and return a list of the integers that are divisible by 3.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>*Build a function that will take in a list of lists of integers - default: [[1, 2], [34, 27], [45, 13]] - and return a dictionary whose keys are integers starting at 1 and counting up and whose values are the integers that are divisible by 3.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

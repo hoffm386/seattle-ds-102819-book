@@ -1,0 +1,2339 @@
+---
+redirect_from:
+  - "/mod-1/on-numpy"
+interact_link: content/mod_1/on_numpy.ipynb
+kernel_name: python3
+kernel_path: content/mod_1
+has_widgets: false
+title: |-
+  Introduction to NumPy
+pagenum: 13
+prev_page:
+  url: /mod_1/data_analysis.html
+next_page:
+  url: 
+suffix: .ipynb
+search: np numpy python list x function array data anaconda base return pi nan libraries not standard arrays y why into org package type import library because packages installed azure using operations options methods elements position remove hyperbolic complex eulers user importing part science com below included need lets order get alias any keywords between lists math useful hit tab add end copy insert reverse sort mean sum tools sine cos cosine tangent cosh calculate terms numbers logarithms devdocs basics html types dimensions value left frac right n formula general particular reason such powerful tool written optimized functions wrapped bring our
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Introduction to NumPy</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Libraries-in-General-and-Numpy-in-Particular">Libraries in General and Numpy in Particular<a class="anchor-link" href="#Libraries-in-General-and-Numpy-in-Particular"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Importing-Python-Libraries">1. Importing Python Libraries<a class="anchor-link" href="#1.-Importing-Python-Libraries"> </a></h2><p>Part of the reason why Python is such a powerful tool for data science is that other people have written and optimized functions and wrapped them into <strong>libraries</strong> that we can bring into our own work.</p>
+<p><img src="https://raw.githubusercontent.com/donnemartin/data-science-ipython-notebooks/master/images/numpy.png" alt="numpy"></p>
+<p><a href="https://www.numpy.org/">NumPy</a> is the fundamental package for scientific computing with Python.</p>
+<p>To use a package in your current workspace type <code>import</code> followed by the name of the library as shown below.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That worked because numpy is <a href="https://docs.anaconda.com/anaconda/packages/py3.7_osx-64/">included with Anaconda</a>, so numpy was installed when you installed Anaconda. Other packages will need to be installed before you can use them.</p>
+<p>Let's try importing azure (which is a library for using MS Azure in Python).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">azure</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-2-79c4d6bf30ff&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">import</span> azure
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;azure&#39;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That failed because azure is <strong>not</strong> included with Anaconda. In order to get this package, we'll have to install it first:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I&#39;ll install this using PIP, the package installer for Python.</span>
+<span class="c1"># This is a bash command, but I can run this in the notebook by</span>
+<span class="c1"># prefixing the command with a &#39;!&#39; (&quot;bang&quot;):</span>
+
+<span class="o">!</span>pip install azure
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting azure
+  Downloading azure-4.0.0-py2.py3-none-any.whl (2.2 kB)
+Collecting azure-servicemanagement-legacy~=0.20.6
+  Downloading azure_servicemanagement_legacy-0.20.6-py2.py3-none-any.whl (78 kB)
+     |████████████████████████████████| 78 kB 5.5 MB/s eta 0:00:01
+Collecting azure-storage-blob~=1.3
+  Downloading azure_storage_blob-1.5.0-py2.py3-none-any.whl (75 kB)
+     |████████████████████████████████| 75 kB 6.1 MB/s  eta 0:00:01
+Collecting azure-datalake-store~=0.0.18
+  Downloading azure_datalake_store-0.0.48-py2.py3-none-any.whl (53 kB)
+     |████████████████████████████████| 53 kB 2.5 MB/s eta 0:00:011
+Collecting azure-servicefabric~=6.3.0.0
+  Downloading azure_servicefabric-6.3.0.0-py2.py3-none-any.whl (1.1 MB)
+     |████████████████████████████████| 1.1 MB 11.1 MB/s eta 0:00:01
+Collecting azure-servicebus~=0.21.1
+  Downloading azure_servicebus-0.21.1-py2.py3-none-any.whl (36 kB)
+Collecting azure-batch~=4.1
+  Downloading azure_batch-4.1.3-py2.py3-none-any.whl (314 kB)
+     |████████████████████████████████| 314 kB 16.9 MB/s eta 0:00:01
+Collecting azure-applicationinsights~=0.1.0
+  Downloading azure_applicationinsights-0.1.0-py2.py3-none-any.whl (104 kB)
+     |████████████████████████████████| 104 kB 16.1 MB/s eta 0:00:01
+Collecting azure-cosmosdb-table~=1.0
+  Downloading azure_cosmosdb_table-1.0.6-py2.py3-none-any.whl (125 kB)
+     |████████████████████████████████| 125 kB 15.3 MB/s eta 0:00:01
+Collecting azure-storage-queue~=1.3
+  Downloading azure_storage_queue-1.4.0-py2.py3-none-any.whl (23 kB)
+Collecting azure-storage-file~=1.3
+  Downloading azure_storage_file-1.4.0-py2.py3-none-any.whl (30 kB)
+Collecting azure-graphrbac~=0.40.0
+  Downloading azure_graphrbac-0.40.0-py2.py3-none-any.whl (63 kB)
+     |████████████████████████████████| 63 kB 3.6 MB/s  eta 0:00:01
+Collecting azure-keyvault~=1.0
+  Downloading azure_keyvault-1.1.0-py2.py3-none-any.whl (352 kB)
+     |████████████████████████████████| 352 kB 11.5 MB/s eta 0:00:01
+Collecting azure-loganalytics~=0.1.0
+  Downloading azure_loganalytics-0.1.0-py2.py3-none-any.whl (16 kB)
+Collecting azure-eventgrid~=1.1
+  Downloading azure_eventgrid-1.3.0-py2.py3-none-any.whl (167 kB)
+     |████████████████████████████████| 167 kB 16.3 MB/s eta 0:00:01
+Collecting azure-mgmt~=4.0
+  Downloading azure_mgmt-4.0.0-py2.py3-none-any.whl (3.0 kB)
+Requirement already satisfied: requests in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from azure-servicemanagement-legacy~=0.20.6-&gt;azure) (2.23.0)
+Collecting azure-common&gt;=1.1.5
+  Downloading azure_common-1.1.24-py2.py3-none-any.whl (12 kB)
+Collecting azure-nspkg&gt;=2.0.0
+  Downloading azure_nspkg-3.0.2-py3-none-any.whl (1.5 kB)
+Collecting azure-storage-common~=1.4
+  Downloading azure_storage_common-1.4.2-py2.py3-none-any.whl (47 kB)
+     |████████████████████████████████| 47 kB 9.7 MB/s  eta 0:00:01
+Requirement already satisfied: cffi in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from azure-datalake-store~=0.0.18-&gt;azure) (1.13.2)
+Collecting adal&gt;=0.4.2
+  Downloading adal-1.2.2-py2.py3-none-any.whl (53 kB)
+     |████████████████████████████████| 53 kB 1.8 MB/s  eta 0:00:01
+Collecting msrest&lt;2.0.0,&gt;=0.4.26
+  Downloading msrest-0.6.11-py2.py3-none-any.whl (83 kB)
+     |████████████████████████████████| 83 kB 2.3 MB/s  eta 0:00:01
+Collecting msrestazure&lt;2.0.0,&gt;=0.4.20
+  Downloading msrestazure-0.6.2-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 5.6 MB/s  eta 0:00:01
+Requirement already satisfied: python-dateutil in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from azure-cosmosdb-table~=1.0-&gt;azure) (2.8.1)
+Requirement already satisfied: cryptography in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from azure-cosmosdb-table~=1.0-&gt;azure) (2.8)
+Collecting azure-cosmosdb-nspkg&gt;=2.0.0
+  Downloading azure_cosmosdb_nspkg-2.0.2-py2.py3-none-any.whl (2.9 kB)
+Collecting azure-mgmt-hanaonazure~=0.1.1
+  Downloading azure_mgmt_hanaonazure-0.1.1-py2.py3-none-any.whl (20 kB)
+Collecting azure-mgmt-cognitiveservices~=3.0
+  Downloading azure_mgmt_cognitiveservices-3.0.0-py2.py3-none-any.whl (58 kB)
+     |████████████████████████████████| 58 kB 9.4 MB/s  eta 0:00:01
+Collecting azure-mgmt-cosmosdb~=0.4.1
+  Downloading azure_mgmt_cosmosdb-0.4.1-py2.py3-none-any.whl (100 kB)
+     |████████████████████████████████| 100 kB 7.2 MB/s eta 0:00:01
+Collecting azure-mgmt-advisor~=1.0
+  Downloading azure_mgmt_advisor-1.0.1-py2.py3-none-any.whl (27 kB)
+Collecting azure-mgmt-containerservice~=4.2
+  Downloading azure_mgmt_containerservice-4.4.0-py2.py3-none-any.whl (206 kB)
+     |████████████████████████████████| 206 kB 19.3 MB/s eta 0:00:01
+Collecting azure-mgmt-devtestlabs~=2.2
+  Downloading azure_mgmt_devtestlabs-2.2.0-py2.py3-none-any.whl (194 kB)
+     |████████████████████████████████| 194 kB 19.0 MB/s eta 0:00:01
+Collecting azure-mgmt-compute~=4.0
+  Downloading azure_mgmt_compute-4.6.2-py2.py3-none-any.whl (3.0 MB)
+     |████████████████████████████████| 3.0 MB 15.3 MB/s eta 0:00:01
+Collecting azure-mgmt-devspaces~=0.1.0
+  Downloading azure_mgmt_devspaces-0.1.0-py2.py3-none-any.whl (33 kB)
+Collecting azure-mgmt-eventhub~=2.1
+  Downloading azure_mgmt_eventhub-2.6.0-py2.py3-none-any.whl (189 kB)
+     |████████████████████████████████| 189 kB 6.6 MB/s eta 0:00:01
+Collecting azure-mgmt-managementpartner~=0.1.0
+  Downloading azure_mgmt_managementpartner-0.1.1-py2.py3-none-any.whl (19 kB)
+Collecting azure-mgmt-resource~=2.0
+  Downloading azure_mgmt_resource-2.2.0-py2.py3-none-any.whl (780 kB)
+     |████████████████████████████████| 780 kB 30.6 MB/s eta 0:00:01
+Collecting azure-mgmt-datamigration~=1.0
+  Downloading azure_mgmt_datamigration-1.0.0-py2.py3-none-any.whl (185 kB)
+     |████████████████████████████████| 185 kB 18.7 MB/s eta 0:00:01
+Collecting azure-mgmt-iothub~=0.5.0
+  Downloading azure_mgmt_iothub-0.5.0-py2.py3-none-any.whl (102 kB)
+     |████████████████████████████████| 102 kB 15.6 MB/s eta 0:00:01
+Collecting azure-mgmt-eventgrid~=1.0
+  Downloading azure_mgmt_eventgrid-1.0.0-py2.py3-none-any.whl (51 kB)
+     |████████████████████████████████| 51 kB 315 kB/s  eta 0:00:01
+Collecting azure-mgmt-maps~=0.1.0
+  Downloading azure_mgmt_maps-0.1.0-py2.py3-none-any.whl (31 kB)
+Collecting azure-mgmt-network~=2.0
+  Downloading azure_mgmt_network-2.7.0-py2.py3-none-any.whl (11.4 MB)
+     |████████████████████████████████| 11.4 MB 9.0 MB/s eta 0:00:01
+Collecting azure-mgmt-billing~=0.2.0
+  Downloading azure_mgmt_billing-0.2.0-py2.py3-none-any.whl (25 kB)
+Collecting azure-mgmt-storage~=2.0
+  Downloading azure_mgmt_storage-2.0.0-py2.py3-none-any.whl (558 kB)
+     |████████████████████████████████| 558 kB 25.5 MB/s eta 0:00:01
+Collecting azure-mgmt-media~=1.0.0rc2
+  Downloading azure_mgmt_media-1.0.0-py2.py3-none-any.whl (335 kB)
+     |████████████████████████████████| 335 kB 5.5 MB/s eta 0:00:01
+Collecting azure-mgmt-servicebus~=0.5.1
+  Downloading azure_mgmt_servicebus-0.5.3-py2.py3-none-any.whl (112 kB)
+     |████████████████████████████████| 112 kB 19.3 MB/s eta 0:00:01
+Collecting azure-mgmt-loganalytics~=0.2.0
+  Downloading azure_mgmt_loganalytics-0.2.0-py2.py3-none-any.whl (89 kB)
+     |████████████████████████████████| 89 kB 10.2 MB/s eta 0:00:01
+Collecting azure-mgmt-datafactory~=0.6.0
+  Downloading azure_mgmt_datafactory-0.6.0-py2.py3-none-any.whl (418 kB)
+     |████████████████████████████████| 418 kB 18.3 MB/s eta 0:00:01
+Collecting azure-mgmt-batch~=5.0
+  Downloading azure_mgmt_batch-5.0.1-py2.py3-none-any.whl (87 kB)
+     |████████████████████████████████| 87 kB 8.3 MB/s  eta 0:00:01
+Collecting azure-mgmt-recoveryservicesbackup~=0.3.0
+  Downloading azure_mgmt_recoveryservicesbackup-0.3.0-py2.py3-none-any.whl (568 kB)
+     |████████████████████████████████| 568 kB 5.7 MB/s eta 0:00:01
+Collecting azure-mgmt-batchai~=2.0
+  Downloading azure_mgmt_batchai-2.0.0-py2.py3-none-any.whl (174 kB)
+     |████████████████████████████████| 174 kB 30.1 MB/s eta 0:00:01
+Collecting azure-mgmt-datalake-store~=0.5.0
+  Downloading azure_mgmt_datalake_store-0.5.0-py2.py3-none-any.whl (88 kB)
+     |████████████████████████████████| 88 kB 9.4 MB/s  eta 0:00:01
+Collecting azure-mgmt-msi~=0.2.0
+  Downloading azure_mgmt_msi-0.2.0-py2.py3-none-any.whl (17 kB)
+Collecting azure-mgmt-powerbiembedded~=2.0
+  Downloading azure_mgmt_powerbiembedded-2.0.0-py2.py3-none-any.whl (38 kB)
+Collecting azure-mgmt-logic~=3.0
+  Downloading azure_mgmt_logic-3.0.0-py2.py3-none-any.whl (303 kB)
+     |████████████████████████████████| 303 kB 29.9 MB/s eta 0:00:01
+Collecting azure-mgmt-iothubprovisioningservices~=0.2.0
+  Downloading azure_mgmt_iothubprovisioningservices-0.2.0-py2.py3-none-any.whl (60 kB)
+     |████████████████████████████████| 60 kB 13.3 MB/s eta 0:00:01
+Collecting azure-mgmt-commerce~=1.0
+  Downloading azure_mgmt_commerce-1.0.1-py2.py3-none-any.whl (22 kB)
+Collecting azure-mgmt-marketplaceordering~=0.1.0
+  Downloading azure_mgmt_marketplaceordering-0.1.0-py2.py3-none-any.whl (16 kB)
+Collecting azure-mgmt-reservations~=0.2.1
+  Downloading azure_mgmt_reservations-0.2.1-py2.py3-none-any.whl (50 kB)
+     |████████████████████████████████| 50 kB 10.5 MB/s eta 0:00:01
+Collecting azure-mgmt-signalr~=0.1.0
+  Downloading azure_mgmt_signalr-0.1.1-py2.py3-none-any.whl (49 kB)
+     |████████████████████████████████| 49 kB 9.6 MB/s  eta 0:00:01
+Collecting azure-mgmt-datalake-analytics~=0.6.0
+  Downloading azure_mgmt_datalake_analytics-0.6.0-py2.py3-none-any.whl (288 kB)
+     |████████████████████████████████| 288 kB 9.3 MB/s eta 0:00:01
+Collecting azure-mgmt-trafficmanager~=0.50.0
+  Downloading azure_mgmt_trafficmanager-0.50.0-py2.py3-none-any.whl (52 kB)
+     |████████████████████████████████| 52 kB 3.8 MB/s  eta 0:00:01
+Collecting azure-mgmt-scheduler~=2.0
+  Downloading azure_mgmt_scheduler-2.0.0-py2.py3-none-any.whl (67 kB)
+     |████████████████████████████████| 67 kB 11.2 MB/s eta 0:00:01
+Collecting azure-mgmt-subscription~=0.2.0
+  Downloading azure_mgmt_subscription-0.2.0-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 9.3 MB/s  eta 0:00:01
+Collecting azure-mgmt-cdn~=3.0
+  Downloading azure_mgmt_cdn-3.1.0-py2.py3-none-any.whl (119 kB)
+     |████████████████████████████████| 119 kB 22.3 MB/s eta 0:00:01
+Collecting azure-mgmt-recoveryservices~=0.3.0
+  Downloading azure_mgmt_recoveryservices-0.3.0-py2.py3-none-any.whl (70 kB)
+     |████████████████████████████████| 70 kB 14.3 MB/s eta 0:00:01
+Collecting azure-mgmt-dns~=2.0
+  Downloading azure_mgmt_dns-2.1.0-py2.py3-none-any.whl (134 kB)
+     |████████████████████████████████| 134 kB 19.3 MB/s eta 0:00:01
+Collecting azure-mgmt-keyvault~=1.0
+  Downloading azure_mgmt_keyvault-1.1.0-py2.py3-none-any.whl (111 kB)
+     |████████████████████████████████| 111 kB 15.9 MB/s eta 0:00:01
+Collecting azure-mgmt-machinelearningcompute~=0.4.1
+  Downloading azure_mgmt_machinelearningcompute-0.4.1-py2.py3-none-any.whl (38 kB)
+Collecting azure-mgmt-search~=2.0
+  Downloading azure_mgmt_search-2.1.0-py2.py3-none-any.whl (41 kB)
+     |████████████████████████████████| 41 kB 479 kB/s  eta 0:00:01
+Collecting azure-mgmt-consumption~=2.0
+  Downloading azure_mgmt_consumption-2.0.0-py2.py3-none-any.whl (46 kB)
+     |████████████████████████████████| 46 kB 8.2 MB/s  eta 0:00:01
+Collecting azure-mgmt-monitor~=0.5.2
+  Downloading azure_mgmt_monitor-0.5.2-py2.py3-none-any.whl (247 kB)
+     |████████████████████████████████| 247 kB 9.7 MB/s eta 0:00:01
+Collecting azure-mgmt-relay~=0.1.0
+  Downloading azure_mgmt_relay-0.1.0-py2.py3-none-any.whl (36 kB)
+Collecting azure-mgmt-authorization~=0.50.0
+  Downloading azure_mgmt_authorization-0.50.0-py2.py3-none-any.whl (81 kB)
+     |████████████████████████████████| 81 kB 14.6 MB/s eta 0:00:01
+Collecting azure-mgmt-managementgroups~=0.1.0
+  Downloading azure_mgmt_managementgroups-0.1.0-py2.py3-none-any.whl (59 kB)
+     |████████████████████████████████| 59 kB 11.1 MB/s eta 0:00:01
+Collecting azure-mgmt-sql~=0.9.1
+  Downloading azure_mgmt_sql-0.9.1-py2.py3-none-any.whl (485 kB)
+     |████████████████████████████████| 485 kB 13.4 MB/s eta 0:00:01
+Collecting azure-mgmt-rdbms~=1.2
+  Downloading azure_mgmt_rdbms-1.9.0-py2.py3-none-any.whl (259 kB)
+     |████████████████████████████████| 259 kB 25.5 MB/s eta 0:00:01
+Collecting azure-mgmt-redis~=5.0
+  Downloading azure_mgmt_redis-5.0.0-py2.py3-none-any.whl (43 kB)
+     |████████████████████████████████| 43 kB 1.8 MB/s  eta 0:00:01
+Collecting azure-mgmt-containerregistry~=2.1
+  Downloading azure_mgmt_containerregistry-2.8.0-py2.py3-none-any.whl (718 kB)
+     |████████████████████████████████| 718 kB 19.9 MB/s eta 0:00:01     |████████████████████▌           | 460 kB 19.9 MB/s eta 0:00:01
+Collecting azure-mgmt-policyinsights~=0.1.0
+  Downloading azure_mgmt_policyinsights-0.1.0-py2.py3-none-any.whl (44 kB)
+     |████████████████████████████████| 44 kB 3.7 MB/s  eta 0:00:01
+Collecting azure-mgmt-notificationhubs~=2.0
+  Downloading azure_mgmt_notificationhubs-2.1.0-py2.py3-none-any.whl (76 kB)
+     |████████████████████████████████| 76 kB 8.8 MB/s  eta 0:00:01
+Collecting azure-mgmt-iotcentral~=0.1.0
+  Downloading azure_mgmt_iotcentral-0.1.0-py2.py3-none-any.whl (28 kB)
+Collecting azure-mgmt-servicefabric~=0.2.0
+  Downloading azure_mgmt_servicefabric-0.2.0-py2.py3-none-any.whl (142 kB)
+     |████████████████████████████████| 142 kB 24.2 MB/s eta 0:00:01
+Collecting azure-mgmt-web~=0.35.0
+  Downloading azure_mgmt_web-0.35.0-py2.py3-none-any.whl (358 kB)
+     |████████████████████████████████| 358 kB 24.5 MB/s eta 0:00:01
+Collecting azure-mgmt-applicationinsights~=0.1.1
+  Downloading azure_mgmt_applicationinsights-0.1.1-py2.py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB 2.1 MB/s  eta 0:00:01
+Collecting azure-mgmt-containerinstance~=1.0
+  Downloading azure_mgmt_containerinstance-1.5.0-py2.py3-none-any.whl (96 kB)
+     |████████████████████████████████| 96 kB 11.4 MB/s eta 0:00:01
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from requests-&gt;azure-servicemanagement-legacy~=0.20.6-&gt;azure) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from requests-&gt;azure-servicemanagement-legacy~=0.20.6-&gt;azure) (2.9)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from requests-&gt;azure-servicemanagement-legacy~=0.20.6-&gt;azure) (1.25.7)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from requests-&gt;azure-servicemanagement-legacy~=0.20.6-&gt;azure) (2019.11.28)
+Requirement already satisfied: pycparser in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from cffi-&gt;azure-datalake-store~=0.0.18-&gt;azure) (2.19)
+Collecting PyJWT&gt;=1.0.0
+  Downloading PyJWT-1.7.1-py2.py3-none-any.whl (18 kB)
+Collecting isodate&gt;=0.6.0
+  Downloading isodate-0.6.0-py2.py3-none-any.whl (45 kB)
+     |████████████████████████████████| 45 kB 4.0 MB/s  eta 0:00:01
+Collecting requests-oauthlib&gt;=0.5.0
+  Downloading requests_oauthlib-1.3.0-py2.py3-none-any.whl (23 kB)
+Requirement already satisfied: six&gt;=1.5 in /Users/ehoffman/.conda/envs/prework-labs/lib/python3.7/site-packages (from python-dateutil-&gt;azure-cosmosdb-table~=1.0-&gt;azure) (1.14.0)
+Collecting azure-mgmt-nspkg&gt;=2.0.0
+  Downloading azure_mgmt_nspkg-3.0.2-py3-none-any.whl (1.6 kB)
+Collecting azure-mgmt-datalake-nspkg&gt;=2.0.0
+  Downloading azure_mgmt_datalake_nspkg-3.0.1-py3-none-any.whl (1.7 kB)
+Collecting oauthlib&gt;=3.0.0
+  Downloading oauthlib-3.1.0-py2.py3-none-any.whl (147 kB)
+     |████████████████████████████████| 147 kB 12.0 MB/s eta 0:00:01
+Installing collected packages: azure-common, azure-nspkg, azure-servicemanagement-legacy, azure-storage-common, azure-storage-blob, PyJWT, adal, azure-datalake-store, isodate, oauthlib, requests-oauthlib, msrest, azure-servicefabric, azure-servicebus, msrestazure, azure-batch, azure-applicationinsights, azure-cosmosdb-nspkg, azure-cosmosdb-table, azure-storage-queue, azure-storage-file, azure-graphrbac, azure-keyvault, azure-loganalytics, azure-eventgrid, azure-mgmt-nspkg, azure-mgmt-hanaonazure, azure-mgmt-cognitiveservices, azure-mgmt-cosmosdb, azure-mgmt-advisor, azure-mgmt-containerservice, azure-mgmt-devtestlabs, azure-mgmt-compute, azure-mgmt-devspaces, azure-mgmt-eventhub, azure-mgmt-managementpartner, azure-mgmt-resource, azure-mgmt-datamigration, azure-mgmt-iothub, azure-mgmt-eventgrid, azure-mgmt-maps, azure-mgmt-network, azure-mgmt-billing, azure-mgmt-storage, azure-mgmt-media, azure-mgmt-servicebus, azure-mgmt-loganalytics, azure-mgmt-datafactory, azure-mgmt-batch, azure-mgmt-recoveryservicesbackup, azure-mgmt-batchai, azure-mgmt-datalake-nspkg, azure-mgmt-datalake-store, azure-mgmt-msi, azure-mgmt-powerbiembedded, azure-mgmt-logic, azure-mgmt-iothubprovisioningservices, azure-mgmt-commerce, azure-mgmt-marketplaceordering, azure-mgmt-reservations, azure-mgmt-signalr, azure-mgmt-datalake-analytics, azure-mgmt-trafficmanager, azure-mgmt-scheduler, azure-mgmt-subscription, azure-mgmt-cdn, azure-mgmt-recoveryservices, azure-mgmt-dns, azure-mgmt-keyvault, azure-mgmt-machinelearningcompute, azure-mgmt-search, azure-mgmt-consumption, azure-mgmt-monitor, azure-mgmt-relay, azure-mgmt-authorization, azure-mgmt-managementgroups, azure-mgmt-sql, azure-mgmt-rdbms, azure-mgmt-redis, azure-mgmt-containerregistry, azure-mgmt-policyinsights, azure-mgmt-notificationhubs, azure-mgmt-iotcentral, azure-mgmt-servicefabric, azure-mgmt-web, azure-mgmt-applicationinsights, azure-mgmt-containerinstance, azure-mgmt, azure
+Successfully installed PyJWT-1.7.1 adal-1.2.2 azure-4.0.0 azure-applicationinsights-0.1.0 azure-batch-4.1.3 azure-common-1.1.24 azure-cosmosdb-nspkg-2.0.2 azure-cosmosdb-table-1.0.6 azure-datalake-store-0.0.48 azure-eventgrid-1.3.0 azure-graphrbac-0.40.0 azure-keyvault-1.1.0 azure-loganalytics-0.1.0 azure-mgmt-4.0.0 azure-mgmt-advisor-1.0.1 azure-mgmt-applicationinsights-0.1.1 azure-mgmt-authorization-0.50.0 azure-mgmt-batch-5.0.1 azure-mgmt-batchai-2.0.0 azure-mgmt-billing-0.2.0 azure-mgmt-cdn-3.1.0 azure-mgmt-cognitiveservices-3.0.0 azure-mgmt-commerce-1.0.1 azure-mgmt-compute-4.6.2 azure-mgmt-consumption-2.0.0 azure-mgmt-containerinstance-1.5.0 azure-mgmt-containerregistry-2.8.0 azure-mgmt-containerservice-4.4.0 azure-mgmt-cosmosdb-0.4.1 azure-mgmt-datafactory-0.6.0 azure-mgmt-datalake-analytics-0.6.0 azure-mgmt-datalake-nspkg-3.0.1 azure-mgmt-datalake-store-0.5.0 azure-mgmt-datamigration-1.0.0 azure-mgmt-devspaces-0.1.0 azure-mgmt-devtestlabs-2.2.0 azure-mgmt-dns-2.1.0 azure-mgmt-eventgrid-1.0.0 azure-mgmt-eventhub-2.6.0 azure-mgmt-hanaonazure-0.1.1 azure-mgmt-iotcentral-0.1.0 azure-mgmt-iothub-0.5.0 azure-mgmt-iothubprovisioningservices-0.2.0 azure-mgmt-keyvault-1.1.0 azure-mgmt-loganalytics-0.2.0 azure-mgmt-logic-3.0.0 azure-mgmt-machinelearningcompute-0.4.1 azure-mgmt-managementgroups-0.1.0 azure-mgmt-managementpartner-0.1.1 azure-mgmt-maps-0.1.0 azure-mgmt-marketplaceordering-0.1.0 azure-mgmt-media-1.0.0 azure-mgmt-monitor-0.5.2 azure-mgmt-msi-0.2.0 azure-mgmt-network-2.7.0 azure-mgmt-notificationhubs-2.1.0 azure-mgmt-nspkg-3.0.2 azure-mgmt-policyinsights-0.1.0 azure-mgmt-powerbiembedded-2.0.0 azure-mgmt-rdbms-1.9.0 azure-mgmt-recoveryservices-0.3.0 azure-mgmt-recoveryservicesbackup-0.3.0 azure-mgmt-redis-5.0.0 azure-mgmt-relay-0.1.0 azure-mgmt-reservations-0.2.1 azure-mgmt-resource-2.2.0 azure-mgmt-scheduler-2.0.0 azure-mgmt-search-2.1.0 azure-mgmt-servicebus-0.5.3 azure-mgmt-servicefabric-0.2.0 azure-mgmt-signalr-0.1.1 azure-mgmt-sql-0.9.1 azure-mgmt-storage-2.0.0 azure-mgmt-subscription-0.2.0 azure-mgmt-trafficmanager-0.50.0 azure-mgmt-web-0.35.0 azure-nspkg-3.0.2 azure-servicebus-0.21.1 azure-servicefabric-6.3.0.0 azure-servicemanagement-legacy-0.20.6 azure-storage-blob-1.5.0 azure-storage-common-1.4.2 azure-storage-file-1.4.0 azure-storage-queue-1.4.0 isodate-0.6.0 msrest-0.6.11 msrestazure-0.6.2 oauthlib-3.1.0 requests-oauthlib-1.3.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now I can import the library:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">azure</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Many packages have standard import aliases. We effect this aliasing by using the Python keyword <code>as</code>. For numpy, the standard alias is <code>np</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1 2 3]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>numpy.ndarray</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Of course we could use any alias we like, including Python keywords! But if we did this, we'd overwrite the meaning of those keywords.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-NumPy-versus-base-Python">2. NumPy versus base Python<a class="anchor-link" href="#2.-NumPy-versus-base-Python"> </a></h2><p>Now that we know libraries exist, why do we want to use them? Let us examine a comparison between base Python and Numpy.</p>
+<p>Python has lists and normal python can do basic math. NumPy, however, has the helpful objects called arrays.</p>
+<p>Numpy has a few advantages over base Python which we will look at.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">names_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;Sally&#39;</span><span class="p">]</span>
+
+<span class="c1">#use numpy.array for numbers and numpy.char.array for strings</span>
+
+<span class="n">names_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">char</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span><span class="s1">&#39;John&#39;</span><span class="p">,</span><span class="s1">&#39;Sally&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">names_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">names_array</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;Bob&#39;, &#39;John&#39;, &#39;Sally&#39;]
+[&#39;Bob&#39; &#39;John&#39; &#39;Sally&#39;]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Make a list and an array of three numbers</span>
+
+<span class="c1">#your code here</span>
+<span class="n">numbers_list</span> <span class="o">=</span>
+<span class="n">numbers_array</span> <span class="o">=</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># multiply your array by 3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># multiply your list by 3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Numpy arrays support the <em>div</em> operator while python lists do not. There are other things that make it useful to utilize numpy over base python for evaluating data.</p>
+<p>Below, you will find a piece of code we will use to compare the speed of operations on a list and operations on an array.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">size_of_vec</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">size_of_vec</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">size_of_vec</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> [X[i] + Y[i] for i in range(len(X))]
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>307 µs ± 7.02 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size_of_vec</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">size_of_vec</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> X + Y
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>979 ns ± 8.27 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-What-Else-Can-Numpy-Do?">3. What Else Can Numpy Do?<a class="anchor-link" href="#3.-What-Else-Can-Numpy-Do?"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Type <code>numbers_list.</code> and then hit <code>TAB</code>. What options do you have?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers_list</span><span class="o">.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The names of standard Python list attributes and methods appear:</p>
+<ul>
+<li><code>append(x)</code> (add x to the end of the list)</li>
+<li><code>clear()</code> (delete all elements of the list)</li>
+<li><code>copy()</code> (make a copy of the list)</li>
+<li><code>count(x)</code> (return the number of instances of x in the list)</li>
+<li><code>extend([x, y])</code> (add x and y to the end of the list)</li>
+<li><code>index(x)</code> (return the position in the list of x)</li>
+<li><code>insert(x, y)</code> (insert y into position x in the list)</li>
+<li><code>pop(i=-1)</code> (remove and return the element at position i in the list)</li>
+<li><code>remove(x)</code> (remove x from the list)</li>
+<li><code>reverse()</code> (reverse the order of the elements of the list)</li>
+<li><code>sort()</code> (sort the elements of the list)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now type <code>numbers_array.</code> and then hit <code>TAB</code>. What options do you have?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numbers_array</span><span class="o">.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now there are many new options!</p>
+<p>Exercise: Write down quick one-liners to describe what these methods do:</p>
+<ul>
+<li><code>max()</code></li>
+<li><code>mean()</code></li>
+<li><code>min()</code></li>
+<li><code>round()</code></li>
+<li><code>std()</code></li>
+<li><code>sum()</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Better-Math-Tools">Better Math Tools<a class="anchor-link" href="#Better-Math-Tools"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Trigonometry:">Trigonometry:<a class="anchor-link" href="#Trigonometry:"> </a></h4><ul>
+<li><code>np.pi</code> for $\pi$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.141592653589793</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.sin()</code> for the sine function</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.49999999999999994</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.cos()</code> for the cosine function</li>
+<li><code>np.tan()</code> for the tangent function</li>
+<li><code>np.sinh()</code> for the hyperbolic sine function</li>
+<li><code>np.cosh()</code> for the hyperbolic cosine function</li>
+<li><code>np.tanh()</code> for the hyperbolic tangent function</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Number-Theory:">Number Theory:<a class="anchor-link" href="#Number-Theory:"> </a></h4><ul>
+<li><code>np.binary_repr()</code> to convert from decimal to binary</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">binary_repr</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;1010&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.diff()</code> to calculate, recursively, the differences between sequence terms</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([3, 5, 7])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([2, 2])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.gcd()</code> for the greatest common divisor</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Array-Logic:">Array Logic:<a class="anchor-link" href="#Array-Logic:"> </a></h4><ul>
+<li><code>np.bitwise_not()</code></li>
+<li><code>np.bitwise_and()</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([False, False,  True])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.bitwise_or()</code></li>
+<li><code>np.bitwise_xor()</code></li>
+<li><code>np.concatenate()</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1, 2, 3, 4])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Complex-Numbers:">Complex Numbers:<a class="anchor-link" href="#Complex-Numbers:"> </a></h4><ul>
+<li><code>np.complex()</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(2-3j)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Data-Analysis:">Data Analysis:<a class="anchor-link" href="#Data-Analysis:"> </a></h4><ul>
+<li><code>np.histogram()</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(array([1, 0, 0, 0, 0, 0, 0, 0, 0, 1]),
+ array([1. , 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2. ]))</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Logarithms:">Logarithms:<a class="anchor-link" href="#Logarithms:"> </a></h4><ul>
+<li><code>np.exp()</code> for Euler's number with exponent</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7.38905609893065</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>np.log()</code> for logarithms</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.302585092994046</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Linear-Algebra:">Linear Algebra:<a class="anchor-link" href="#Linear-Algebra:"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>np.linalg</code> is an incredibly useful module for matrix mathematics, which we shall need in future lessons!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="More-Tools">More Tools<a class="anchor-link" href="#More-Tools"> </a></h3><p>See <a href="https://numpy.org/devdocs/user/basics.html">here</a> for more information about numpy. Let's go over some of these points:</p>
+<h4 id="More-numeric-data-types-than-base-Python"><a href="https://numpy.org/devdocs/user/basics.types.html">More numeric data types than base Python</a><a class="anchor-link" href="#More-numeric-data-types-than-base-Python"> </a></h4><h4 id="Intrinsic-array-constructors:">Intrinsic array constructors:<a class="anchor-link" href="#Intrinsic-array-constructors:"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+[0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Multi-dimensional-indexing:">Multi-dimensional indexing:<a class="anchor-link" href="#Multi-dimensional-indexing:"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="n">nums</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(2, 3)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Why is this more efficient than <code>nums[0][2]</code>?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> nums[0, 2]
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>171 ns ± 1.06 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">timeit</span> nums[0][2]
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>345 ns ± 12.9 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Filtering:">Filtering:<a class="anchor-link" href="#Filtering:"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([3, 4])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Broadcasting:">Broadcasting:<a class="anchor-link" href="#Broadcasting:"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">arr2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ -9, -10, -11])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Two arrays can be broadcast together if their dimensions have <em>the same</em> value or if one of the dimensions has a value of <em>1</em>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">175.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">25.</span><span class="p">,</span> <span class="mf">1.47</span><span class="p">,</span> <span class="mf">9.36</span><span class="p">]])</span>
+<span class="n">arr4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr3</span> <span class="o">*</span> <span class="n">arr4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([[-50.  ,  15.  , 876.  ],
+       [125.  ,   7.35,  46.8 ]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="np.nan-and-np.inf">np.nan and np.inf<a class="anchor-link" href="#np.nan-and-np.inf"> </a></h4><p>NaN stands for "not a number". Numpy's np.nan is a handy way of representing these, in part because np.nan <em>is a float!</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>float</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This makes it convenient to perform mathematical operations on arrays that contain NaNs.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arr5</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>nan</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Even though the array has a NaN, we don't get an error in calculating its mean. Moreover, we can do this:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">arr5</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3.6666666666666665</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And this:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">arr5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5.5</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>inf</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ZeroDivisionError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-43-9b29e54226d9&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>inv<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-42-7e45c0f9728c&gt;</span> in <span class="ansi-cyan-fg">inv</span><span class="ansi-blue-fg">(x)</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">def</span> inv<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> x<span class="ansi-blue-fg">**</span><span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">2</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ZeroDivisionError</span>: 0.0 cannot be raised to a negative power</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inverse</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>inf</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Write down descriptions of what these methods do:</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>all()</code></li>
+<li><code>any()</code></li>
+<li><code>cumprod()</code></li>
+<li><code>cumsum()</code></li>
+<li><code>reshape()</code></li>
+<li><code>shape</code> --&gt; No parentheses! This is an attribute and not a method.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Calculate the following using numpy:</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$\cos\left(\frac{\pi}{3}\right)$</li>
+<li>$\cosh\left(\frac{\pi}{3}\right)$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Write a function that will return the sum of the first $n$ terms of an array, where the user inputs both $n$ and the array.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Write a function that will return the logarithm of the standard deviation of an input array.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Use numpy to multiply the complex numbers $257 + 134i$ and $987 - 643i$.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><strong>Euler's Formula.</strong> How could we use numpy to test Euler's Formula: $e^{\pi i} + 1 = 0$?</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
